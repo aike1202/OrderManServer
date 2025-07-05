@@ -19,7 +19,7 @@ public class CodeGenerator {
                 )
                 .globalConfig(builder -> {
                     builder
-                            .author("your_name") // 开发人员
+                            .author("艾科") // 开发人员
                             .outputDir(System.getProperty("user.dir") + "/src/main/java") // 输出路径
                             .dateType(DateType.TIME_PACK) // 时间类型
                             .commentDate("yyyy-MM-dd") // 注释日期格式
@@ -30,16 +30,23 @@ public class CodeGenerator {
                     builder
                             .parent("org.aike.ordermanserver") // 父包名
                             .entity("model")
-                            .service("%sService") // 设置 Service 包名
+                            .service("service") // 设置 Service 包名
                             .serviceImpl("service.impl") // 设置 Service Impl 包名
                             .mapper("mapper");// 设置 Mapper 包名
 
                 })
                 .strategyConfig(builder -> {
                     builder
-                            .addInclude("user") // 需要生成的表名
+                            .addInclude("shop") // 需要生成的表名
+                            .addInclude("role") // 需要生成的表名
+                            .addInclude("user_role") // 需要生成的表名
+                            .addInclude("user_token") // 需要生成的表名
+                            .serviceBuilder()
+                            .formatServiceFileName("%sService")
                             .entityBuilder()
                             .superClass(BaseEntity.class)
+                            .formatFileName("%sEntity")
+                            .enableSerialAnnotation()
                             .enableLombok() // 启用Lombok
                             .enableChainModel()
                             .idType(IdType.AUTO) // 主键类型
@@ -49,6 +56,7 @@ public class CodeGenerator {
                             .addTableFills(new Column("created_at", FieldFill.INSERT))
                             .addTableFills(new Column("updated_at", FieldFill.UPDATE))
                             .controllerBuilder()
+
                             .enableRestStyle(); //生成RestController
                 })
                 .templateEngine(new FreemarkerTemplateEngine()) // 使用Freemarker模板
