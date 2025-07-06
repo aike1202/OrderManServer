@@ -37,10 +37,7 @@ public class CodeGenerator {
                 })
                 .strategyConfig(builder -> {
                     builder
-                            .addInclude("shop") // 需要生成的表名
-                            .addInclude("role") // 需要生成的表名
-                            .addInclude("user_role") // 需要生成的表名
-                            .addInclude("user_token") // 需要生成的表名
+                            .addInclude("user")
                             .serviceBuilder()
                             .formatServiceFileName("%sService")
                             .entityBuilder()

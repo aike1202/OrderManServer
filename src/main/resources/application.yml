@@ -1,6 +1,49 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/order_man?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
 mybatis-plus:
   global-config:
     db-config:
       logic-delete-field: isDeleted  # ??????
       logic-delete-value: true       # ?????????1?
       logic-not-delete-value: false  # ?????????0?
+
+
+# swagger-ui custom path
+springdoc:
+  swagger-ui:
+    path : /swagger-ui.html
+
+
+
+#sa-token:
+#  # token名称 (同时也是cookie名称)
+#  token-name: Authorization
+#  # 是否允许同一账号并发登录 (为true时踢出旧token)
+#  is-concurrent: false
+#  # 在多人登录同一账号时，是否共用一个token (为true时所有设备共享一个token)
+#  is-share: false
+#  # token有效期 (单位: 秒) 7天
+#  timeout: 604800
+#  # 是否尝试从请求体中读取token
+#  is-read-body: true
+#  # 是否尝试从header中读取token
+#  is-read-header: true
+#  # 拦截路由配置
+#  url-match:
+#    - "/api/**"
+#  # 排除路由配置
+#  not-match:
+#    - "/api/auth/login"
+#    - "/api/auth/change-password"
+#    - "/v3/api-docs"         # 添加Swagger的API文档JSON
+#    - "/v3/api-docs/**"       # 可能有的多级路径，也加上
+#    - "/swagger-ui/**"        # Swagger UI的静态资源
+#    - "/swagger-ui.html"      # 有些版本可能使用这个路径，但SpringDoc默认是/swagger-ui/index.html，但通常
