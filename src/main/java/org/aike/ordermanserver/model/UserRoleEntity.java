@@ -3,8 +3,7 @@ package org.aike.ordermanserver.model;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -27,7 +26,7 @@ import java.io.Serializable;
 @ToString
 @TableName("user_role")
 @Accessors(chain = true)
-@ApiModel(value = "UserRoleEntity对象", description = "用户角色关联表")
+@Schema(name = "UserRoleEntity对象", description = "用户角色关联表")
 public class UserRoleEntity extends BaseEntity {
 
     @Serial
@@ -36,12 +35,18 @@ public class UserRoleEntity extends BaseEntity {
     /**
      * 用户ID
      */
-    @ApiModelProperty("用户ID")
+    @Schema(name = "用户ID")
     private Long userId;
 
     /**
      * 角色ID
      */
-    @ApiModelProperty("角色ID")
+    @Schema(name = "角色ID")
     private Long roleId;
+
+    /**
+     * 角色编码（用于sa-token权限管理）
+     */
+    @Schema(name = "角色编码")
+    private String roleCode;
 }

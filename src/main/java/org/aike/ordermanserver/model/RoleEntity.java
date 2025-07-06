@@ -1,10 +1,7 @@
 package org.aike.ordermanserver.model;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -27,21 +24,25 @@ import java.io.Serializable;
 @ToString
 @TableName("role")
 @Accessors(chain = true)
-@ApiModel(value = "RoleEntity对象", description = "角色表")
+@Schema(name = "RoleEntity对象", description = "角色表")
 public class RoleEntity extends BaseEntity implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
 
+
+    @Schema(name = "角色编码")
+    private String roleCode;
+
     /**
      * 角色名称
      */
-    @ApiModelProperty("角色名称")
+    @Schema(name = "角色名称")
     private String name;
 
     /**
      * 角色描述
      */
-    @ApiModelProperty("角色描述")
+    @Schema(name = "角色描述")
     private String description;
 }

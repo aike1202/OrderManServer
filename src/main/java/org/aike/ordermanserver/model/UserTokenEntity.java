@@ -3,8 +3,7 @@ package org.aike.ordermanserver.model;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -28,7 +27,7 @@ import java.time.LocalDateTime;
 @ToString
 @Accessors(chain = true)
 @TableName("user_token")
-@ApiModel(value = "UserTokenEntity对象", description = "用户Token表")
+@Schema(name = "UserTokenEntity对象", description = "用户Token表")
 public class UserTokenEntity extends BaseEntity {
 
     @Serial
@@ -37,24 +36,24 @@ public class UserTokenEntity extends BaseEntity {
     /**
      * 用户ID
      */
-    @ApiModelProperty("用户ID")
+    @Schema(name = "用户ID")
     private Long userId;
 
     /**
      * Token值
      */
-    @ApiModelProperty("Token值")
+    @Schema(name = "Token值")
     private String token;
 
     /**
      * 过期时间
      */
-    @ApiModelProperty("过期时间")
+    @Schema(name = "过期时间")
     private LocalDateTime expiresAt;
 
     /**
      * 设备信息
      */
-    @ApiModelProperty("设备信息")
+    @Schema(name = "设备信息")
     private String deviceInfo;
 }
